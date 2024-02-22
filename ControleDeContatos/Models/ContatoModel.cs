@@ -6,14 +6,14 @@ namespace ControleDeContatos.Models
     {
         public int Id { get; set; }
         
-        [Required(ErrorMessage ="Digite o nome do contato")]
+        [Required(ErrorMessage ="Por favor, digite o nome do contato")]
         public string Nome { get; set; }
         
-        [Required(ErrorMessage = "Digite o nome do contato")]
+        [Required(ErrorMessage = "Por favor, digite o e-mail do contato")]
         [EmailAddress(ErrorMessage= "O e-mail informado não é válido")]
         public string Email { get; set;}
 
-        [Required(ErrorMessage = "Digite o nome do contato")]
+        [Required(ErrorMessage = "Por favor, digite o celular do contato")]
         [Phone(ErrorMessage = "O celular informado não é válido")]
         public string Celular { get; set; }
     }
