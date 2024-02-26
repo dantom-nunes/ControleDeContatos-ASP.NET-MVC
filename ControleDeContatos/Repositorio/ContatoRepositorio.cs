@@ -21,7 +21,7 @@ namespace ControleDeContatos.Repositorio
             return _bancoContext.Contatos.ToList();
         }
 
-        public ContatoModel Adicionar(ContatoModel contato)
+        public ContatoModel CriarContato(ContatoModel contato)
         {
             // Gravar no banco de dados
             _bancoContext.Contatos.Add(contato);

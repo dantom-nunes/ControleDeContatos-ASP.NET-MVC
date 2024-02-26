@@ -64,6 +64,7 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    _contatoRepositorio.CriarContato(contato);
                     TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
                     return RedirectToAction("Index");
                 }
@@ -72,7 +73,6 @@ namespace ControleDeContatos.Controllers
             }
             catch (Exception erro)
             {
-                _contatoRepositorio.Adicionar(contato);
                 TempData["MensagemErro"] = $"Ops, não conseguimos cadastrar seu contato, tente novamente. Detalhes do erro:{erro.Message}";
                 return RedirectToAction("Index");
             }
