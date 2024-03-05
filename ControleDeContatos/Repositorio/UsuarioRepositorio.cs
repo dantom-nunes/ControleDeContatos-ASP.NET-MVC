@@ -29,7 +29,7 @@ namespace ControleDeContatos.Repositorio
             return usuario;
         }
 
-        public UsuarioModel AtualizarUsuario(UsuarioModel usuario)
+        public UsuarioModel EditarUsuario(UsuarioModel usuario)
         {
             UsuarioModel usuarioDB = BuscarPorId(usuario.Id);
 

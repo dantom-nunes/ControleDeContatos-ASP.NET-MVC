@@ -7,7 +7,7 @@ namespace ControleDeContatos.Repositorio
         List<UsuarioModel> BuscarTodos();
         UsuarioModel BuscarPorId(int id);
         UsuarioModel CriarUsuario(UsuarioModel usuario);
-        UsuarioModel AtualizarUsuario(UsuarioModel usuario);
+        UsuarioModel EditarUsuario(UsuarioModel usuario);
         bool ApagarUsuario(int id);
     }
 }
