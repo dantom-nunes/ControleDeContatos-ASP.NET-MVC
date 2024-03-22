@@ -12,7 +12,7 @@ namespace ControleDeContatos.Filters
         {
             string sessaoUsuario = context.HttpContext.Session.GetString("sessaoUsuarioLogado");
 
-            if (string.IsNullOrEmpty(sessaoUsuario) )
+            if (string.IsNullOrEmpty(sessaoUsuario))
             {
                 // se o usuário estiver deslogado e tentar acessar outras paginas será redirecionado para a tela de login
                 // a primeira entrada é a rota da controller do login e a segunda é a ação que ele redirecionará
