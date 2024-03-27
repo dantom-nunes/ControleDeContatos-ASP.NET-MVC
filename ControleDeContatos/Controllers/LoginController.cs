@@ -26,6 +26,11 @@ namespace ControleDeContatos.Controllers
             return View();
         }
 
+        public IActionResult RedefinirSenha()
+        {
+            return View();
+        }
+
         public IActionResult Logoff()
         {
             _sessao.RemoverSessaoDoUsuario();
@@ -49,6 +54,9 @@ namespace ControleDeContatos.Controllers
                     {
                         if(usuario.SenhaValida(loginModel.Senha))
                         {
+                            string novaSenha = usuario.GerarNovaSenha();
+                            _usuarioRepositorio.EditarUsuario(usuario);
+
                             _sessao.CriarSessaoDoUsuario(usuario);
                             return RedirectToAction("Index", "Home");
                         }
@@ -64,6 +72,33 @@ namespace ControleDeContatos.Controllers
             catch (Exception erro)
             {
                 TempData["MensagemErro"] = $"Ops, não conseguimos realizar o login. Mais detalhes do erro:{erro.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult EnviarLinkRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UsuarioModel usuario = _usuarioRepositorio.BuscarPorEmail(redefinirSenhaModel.Email);
+
+                    if (usuario != null)
+                    {
+                        TempData["MensagemSucesso"] = $"Enviamos uma nova senha para o seu e-mail.";
+                        return RedirectToAction("Index", "Login");
+                    }
+
+                    TempData["MensagemErro"] = $"Não conseguimos redefinir sua senha, por favor verifique os dados informados.";
+                }
+
+                return View("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos redefinir sua senha, por favor tente novamente. Mais detalhes do erro:{erro.Message}";
                 return RedirectToAction("Index");
             }
         }
