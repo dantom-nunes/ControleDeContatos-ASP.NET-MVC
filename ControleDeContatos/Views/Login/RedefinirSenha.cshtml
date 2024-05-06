@@ -15,6 +15,12 @@
 <form asp-controller="Login" asp-action="EnviarLinkRedefinirSenha" method="post">
 
     <div class="mb-3">
+        <label for="login" class="form-label">Login</label>
+        <input type="text" asp-for="Login" class="form-control" id="login">
+        @Html.ValidationMessageFor(x => x.Login)
+    </div>
+
+    <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="text" asp-for="Email" class="form-control" id="email">
         @Html.ValidationMessageFor(x => x.Email)

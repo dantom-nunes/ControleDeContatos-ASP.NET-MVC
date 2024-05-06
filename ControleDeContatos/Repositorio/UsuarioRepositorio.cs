@@ -16,9 +16,9 @@ namespace ControleDeContatos.Repositorio
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Login == login);
         }
 
-        public UsuarioModel BuscarPorEmail(string email)
+        public UsuarioModel BuscarPorEmailELogin(string email, string login)
         {
-            return _bancoContext.Usuarios.FirstOrDefault(x => x.Email == email);
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Email == email && x.Login == login);
         }
 
         public UsuarioModel BuscarPorId(int id)
