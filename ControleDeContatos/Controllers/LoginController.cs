@@ -51,15 +51,10 @@ namespace ControleDeContatos.Controllers
                 {
                     UsuarioModel usuario = _usuarioRepositorio.BuscarPorLogin(loginModel.Login);
 
-
-
                     if (usuario != null)
                     {
                         if(usuario.SenhaValida(loginModel.Senha))
                         {
-                            string novaSenha = usuario.GerarNovaSenha();
-                            _usuarioRepositorio.EditarUsuario(usuario);
-
                             _sessao.CriarSessaoDoUsuario(usuario);
                             return RedirectToAction("Index", "Home");
                         }
